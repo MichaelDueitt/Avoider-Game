@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avoider Game</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #888; /* Set the background color to grey */
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #itemShopButton {
+      position: absolute;
+      bottom: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #f0ec00;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 50px;
+    }
+    #playButton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #4caf4c;
+      color: black;
+      border: none;
+      border-radius: 50px;
+    }
+
+    #itemShop {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+  <div id="scoreDisplay" class="game-info">Score: <span id="score">0</span></div>
+  <div id="goldDisplay" class="game-info">Collected Gold: <span id="collectedGold">0</span></div>
+
+  <button id="playButton" onclick="startGame()">Play</button>
+  <button id="itemShopButton" onclick="goToItemShop()">Item Shop</button>
+  <!-- Your HTML for the item shop buttons -->
+<button id="enterGameButton">Enter Game</button>
+<button id="exitItemShopButton">Exit Item Shop</button>
+
+
+   <!-- Item Shop HTML -->
+   <div id="itemShop">
+    <h1>Welcome to the Item Shop!</h1>
+    <ul id="itemList">
+      <li class="item" data-name="Health Potion" data-price="20">
+        <span>Health Potion</span>
+        <span>Price: 20 Gold</span>
+        <button class="buyButton" onclick="buyItem('Health Potion', 20)">Buy</button>
+      </li>
+      <li class="item" data-name="Shield" data-price="50">
+        <span>Shield</span>
+        <span>Price: 50 Gold</span>
+        <button class="buyButton" onclick="buyItem('Shield', 50)">Buy</button>
+      </li>
+      <!-- Add more items as needed -->
+    </ul>
+
+    <div id="inventory">
+      <h2>Your Inventory</h2>
+      <ul id="playerInventory"></ul>
+      <p>Total Gold: <span id="totalGold">0</span></p>
+      <p>Total Score: <span id="totalScore">0</span></p>
+    </div>
+  </div>
+  
+  <script src="game.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Your JavaScript code here
+  
+      // Add event listeners to the item shop buttons
+      document.getElementById('playButton').addEventListener('click', startGame);
+      document.getElementById('itemShopButton').addEventListener('click', goToItemShop);
+      document.getElementById('enterGameButton').addEventListener('click', startGame);
+      document.getElementById('exitItemShopButton').addEventListener('click', exitItemShop);
+    });
+  </script>
+</body>
+</html>
