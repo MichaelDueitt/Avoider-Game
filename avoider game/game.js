@@ -17,8 +17,6 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const player = {
-  x: canvas.width / 2,
-  y: canvas.height - 60,
   width: 60,
   height: 60,
   img: new Image(),
@@ -376,11 +374,8 @@ const itemShopButton = document.getElementById('itemShopButton');
 
 // Function to handle the item shop action
 function goToItemShop() {
-  // Replace this line with the actual action you want to perform
+  document.getElementById('itemShop').style.display = 'block';
   alert("Opening Item Shop!"); // Example: show an alert
-
-  // You can also navigate to a different page using window.location.href
-  // window.location.href = "item_shop.html";
 }
 
 // Add event listener to the item shop button
@@ -404,86 +399,36 @@ function startGame() {
   gameLoop();
 }
 
-// ... (your existing code)
+// game.js
 
-// Variable to track whether the player is in the item shop
-let inItemShop = false;
+document.addEventListener('DOMContentLoaded', function () {
+  // Your JavaScript code here
 
-// ... (your existing code)
+  // Add event listeners to the item shop buttons
+  document.getElementById('playButton').addEventListener('click', startGame);
+  document.getElementById('itemShopButton').addEventListener('click', goToItemShop);
+  document.getElementById('enterGameButton').addEventListener('click', startGame);
+  document.getElementById('exitItemShopButton').addEventListener('click', exitItemShop);
+});
 
-// Function to handle the item shop action
 function goToItemShop() {
-  // Set the game state to item shop
-  inItemShop = true;
-
-  // Hide relevant game elements
-  itemShopButton.style.display = 'none';
-  playButton.style.display = 'none';
-
-  // Show item shop elements
-  document.getElementById('itemShop').style.display = 'block';
-
-  // Stop the game loop when entering the item shop
-  stopGameLoop();
+  // Hide the game elements and show the item shop
+  document.getElementById('gameCanvas').style.display = 'none';
+  document.getElementById('scoreDisplay').style.display = 'none';
+  document.getElementById('goldDisplay').style.display = 'none';
+  document.getElementById('playButton').style.display = 'none';
+  document.getElementById('itemShopButton').style.display = 'none';
+  // Show the item shop and the exit button
+  document.getElementById('exitItemShopButton').style.display = 'block';
 }
 
-// Function to handle exiting the item shop and returning to the game
 function exitItemShop() {
-  // Set the game state back to the game
-  inItemShop = false;
-
-  // Show relevant game elements
-  itemShopButton.style.display = 'block';
-  playButton.style.display = 'block';
-
-  // Hide item shop elements
+  // Show the game elements and hide the item shop
+  document.getElementById('gameCanvas').style.display = 'block';
+  document.getElementById('scoreDisplay').style.display = 'block';
+  document.getElementById('goldDisplay').style.display = 'block';
+  document.getElementById('playButton').style.display = 'block';
+  document.getElementById('itemShopButton').style.display = 'block';
   document.getElementById('itemShop').style.display = 'none';
-
-  // Resume the game loop when exiting the item shop
-  resumeGameLoop();
+  document.getElementById('exitItemShopButton').style.display = 'none';
 }
-
-// Function to stop the game loop
-function stopGameLoop() {
-  gameRunning = false;
-}
-
-// Function to resume the game loop
-function resumeGameLoop() {
-  if (!gameRunning) {
-    gameRunning = true;
-    gameLoop();
-  }
-}
-
-// Add event listeners to the item shop buttons
-document.getElementById('enterGameButton').addEventListener('click', startGame);
-document.getElementById('exitItemShopButton').addEventListener('click', exitItemShop);
-
-// ... (your existing code)
-
-// Adjust your game loop to update and draw either the game or the item shop based on the game state
-function gameLoop() {
-  if (inItemShop) {
-    // Update and draw the item shop
-    updateItemShop();
-    drawItemShop();
-  } else {
-    // Update and draw the game
-    update();
-    draw();
-  }
-
-  requestAnimationFrame(gameLoop);
-}
-
-// Functions to update and draw the item shop
-function updateItemShop() {
-  // Implement item shop logic here
-}
-
-function drawItemShop() {
-  // Implement item shop drawing here
-}
-
-// ... (your existing code)
