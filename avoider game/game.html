@@ -55,6 +55,27 @@
     #itemShop {
       display: none;
     }
+        /* Container styling */
+        .button-container {
+      display: flex;
+      flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+      justify-content: space-between; /* Evenly space the buttons horizontally */
+      align-items: center; /* Center the buttons vertically within each line */
+      margin-top: 250px; /* Add margin for spacing */
+    }
+
+    /* Button styling */
+    #button1, #button2, #button3, #button4, #button5, #button6, #button7, #button8, #button9 {      
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 50px;
+      background-color: #4caf4c;
+      margin: 80px 180px; /* Adjusted margin for even spacing */
+      width: 200px; /* Fixed width for each button */
+    }
+
   </style>
 </head>
 <body>
@@ -65,6 +86,17 @@
   <button id="playButton" onclick="startGame()">Play</button>
   <button id="itemShopButton" onclick="goToItemShop()">Item Shop</button>
   <button id="exitItemShopButton" onclick="exitItemShop()">Exit Item Shop</button>
+<div class="button-container">
+  <button id="button1">Button 1</button>
+  <button id="button2">Button 2</button>
+  <button id="button3">Button 3</button>
+  <button id="button4">Button 4</button>
+  <button id="button5">Button 5</button>
+  <button id="button6">Button 6</button>
+  <button id="button7">Button 7</button>
+  <button id="button8">Button 8</button>
+  <button id="button9">Button 9</button>
+</div>
 
 <!-- Item Shop HTML -->
 <div id="itemShop">
